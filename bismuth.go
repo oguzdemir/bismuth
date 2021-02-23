@@ -131,6 +131,7 @@ func (ctx *ExecContext) reconnect() (err error) {
 		config := &ssh.ClientConfig{
 			User: username,
 			Auth: auths,
+			HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 		}
 		conn, err := net.DialTimeout("tcp", addr, networkTimeout)
 		if err != nil {
